@@ -15,6 +15,7 @@
 			v = "vim";
 			rebuild = "sudo nixos-rebuild switch --flake .#writerdeck";
 			fetch = "fastfetch";
+      please = "sudo"; # :)
 		};	
 	};
 
