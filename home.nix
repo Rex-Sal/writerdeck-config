@@ -15,7 +15,6 @@
 			v = "vim";
 			rebuild = "sudo nixos-rebuild switch --flake .#writerdeck";
 			fetch = "fastfetch";
-      please = "sudo"; # :)
 		};	
 	};
 
@@ -58,7 +57,12 @@
 		addKeysToAgent = "yes";	
 	};
 
-	
+  programs.keychain = {
+    enable = true;
+    keys = [ "rxsl_gh" ];
+    extraFlags = [ "--quiet" ]; 
+  };
+
 	programs.git = {
 		enable = true;
 		userName = "Rex-Sal";
