@@ -19,7 +19,7 @@
 					inherit inputs;
 				};
 				modules = [
-					./configuration.nix
+					./system/configuration.nix
 					home-manager.nixosModules.home-manager
 					{
 						home-manager.useGlobalPkgs = true;
@@ -27,7 +27,7 @@
 						home-manager.extraSpecialArgs = { inherit inputs; };
 
 						home-manager.users = {
-							rxsl = import ./home.nix;
+							rxsl = import ./home/home.nix;
 						};
 					}
 				];

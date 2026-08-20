@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./wifi.nix
     ];
 
   # Bootloader.
@@ -19,9 +20,6 @@
 		hostName = "writerdeck"; # Define your hostname.
 		wireless = {
 			enable = true; # Enables wireless support via wpa_supplicant
-			userControlled.enable = true;
-			networks."NETGEAR92".pskRaw = "2dc9c8963a51980679a8244ef2effac784e5013005a13da4731b380e773cfdc4";
-			networks."Fios-ZbCW2".pskRaw = "5a0bb3e4647b5e5f7c93a73f021d25186d41dca3b786d0fd58a3427fe527a2be";
 		};
 	};
 
@@ -63,18 +61,7 @@
 
   services.kmscon = {
     enable = true;
-
-		config.font-name = "Iosevka";
- 
- 		/* 
-    fonts = [
-      {
-        name = "Iosevka";
-        package= pkgs.iosevka;
-      }
-    ];
-		*/
-
+		config.font-name = "Iosevka"; 
   };
 
   console = {
@@ -91,16 +78,17 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wget
-    git
-    fastfetch
-    tmux
     acpi
-    upower
     brightnessctl
-    xev
     btop
+    fastfetch
+    git
     htop
+    keychain
+    tmux
+    upower
+    wget
+    xev
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
